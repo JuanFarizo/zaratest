@@ -13,8 +13,14 @@
             price_list,
             application_date,
             price.
+I have to build a custom response with the specific OUTPUT.
 
 5. Implementation Details:
+- Add two key entities I think it would fit in this kind of application, one is Brand, and the other is the Product itself. Only with fields that I'm going to use in this exercise.
+- The service in this example is not needed, I added because in reality there is where Use cases are explicit and managed, I tried to do it clean but thinking in which aspects you will be interested to watch.
+
+
+6. Check if PresentationConfiguration is needed.
 
 
 En la base de datos de comercio electrónico de la compañía disponemos de la tabla PRICES que refleja el precio final (pvp) y la tarifa que aplica a un producto de una cadena entre unas fechas determinadas. A continuación se muestra un ejemplo de la tabla con los campos relevantes:

@@ -17,15 +17,15 @@ import static org.springframework.http.ResponseEntity.ok;
 @RequestMapping("/zara/price")
 public class PriceController {
 
-    private PriceService priceService;
+    private final PriceService priceService;
 
-    PriceController priceController(PriceService priceService) {
+    PriceController(PriceService priceService) {
         this.priceService = priceService;
     }
 
-    @GetMapping(value = "/user/{id}/regularity", produces = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<Price> price(@Valid @RequestBody FindPriceRequest request) {
-        return ok(priceService.findPrice());
+        return ok(priceService.findPrice(request.getApplicationDate(), request.getProductId(), request.getBrandId()));
     }
 
 }
