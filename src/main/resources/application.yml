@@ -8,16 +8,10 @@ spring:
       enabled: true
       path: /h2-console
   jpa:
-    properties:
-      hibernate:
-        jdbc:
-          time_zone: UTC
+    properties.hibernate.jdbc.time_zone: UTC
 #    show-sql: true
-    hibernate:
-      ddl-auto: none
-
-#logging:
-#  level:
+    hibernate.ddl-auto: none
+#logging.level:
 #    org.hibernate.SQL: DEBUG
 #    org.hibernate.type: TRACE
 #    org.hibernate.orm.jdbc.bind: trace

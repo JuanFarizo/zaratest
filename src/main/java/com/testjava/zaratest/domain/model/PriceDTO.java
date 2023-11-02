@@ -20,4 +20,18 @@ public interface PriceDTO extends Serializable {
     BigDecimal getPrice();
 
     Integer getPriority();
+
+    void setProductId(Long productId);
+
+    void setBrandId(Long brandId);
+
+    void setPriceListId(Long priceListId);
+
+    void setStartDate(LocalDateTime startDate);
+
+    void setEndDate(LocalDateTime endDate);
+
+    void setPrice(BigDecimal price);
+
+    void setPriority(Integer priority);
 }
