@@ -26,7 +26,7 @@ public class Price implements Serializable {
     @Serial
     private static final long serialVersionUID = -1896863510838658560L;
 
-    public static final String NAME = "PRICE";
+    public static final String NAME = "price";
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -40,7 +40,6 @@ public class Price implements Serializable {
     @JoinColumn(
             nullable = false,
             name = "brand_id",
-            referencedColumnName = "brand_id",
             foreignKey = @ForeignKey(name = "price_brand_fk")
     )
     private Brand brand;
@@ -58,7 +57,6 @@ public class Price implements Serializable {
     @JoinColumn(
             nullable = false,
             name = "product_id",
-            referencedColumnName = "product_id",
             foreignKey = @ForeignKey(name = "price_product_fk")
     )
     private Product product;

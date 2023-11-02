@@ -15,7 +15,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
         name = Brand.NAME
 )
 public class Brand {
-    public static final String NAME = "BRAND";
+    public static final String NAME = "brand";
 
     @Id
     @GeneratedValue(strategy = IDENTITY)

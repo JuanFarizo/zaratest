@@ -1,56 +1,53 @@
-DROP TABLE IF EXISTS PRICE;
-DROP TABLE IF EXISTS PRODUCT;
-DROP TABLE IF EXISTS BRAND;
-
-CREATE TABLE BRAND
-  (
-     ID                     BIGINT          NOT NULL auto_increment,
-     CREATED_AT             DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
-     NAME                   VARCHAR(255)    NOT NULL,
-     UPDATE_AT              DATETIME,
-     VERSION                INTEGER         NOT NULL DEFAULT 0,
-     PRIMARY KEY (ID)
-  )
-engine=innodb;
-
-CREATE TABLE PRODUCT
-  (
-     ID                     BIGINT          NOT NULL auto_increment,
-     CREATED_AT             DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
-     NAME                   VARCHAR(255)    NOT NULL,
-     UPDATE_AT              DATETIME,
-     VERSION                INTEGER         NOT NULL DEFAULT 0,
-     PRIMARY KEY (ID)
-  )
-engine=innodb;
-
-CREATE TABLE PRICE
-  (
-     ID                     BIGINT          NOT NULL auto_increment,
-     CREATED_AT             DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
-     BRAND_ID               BIGINT          NOT NULL,
-     START_DATE             DATETIME        NOT NULL,
-     END_DATE               DATETIME        NOT NULL,
-     PRICE_LIST_ID          BIGINT          NOT NULL,
-     PRODUCT_ID             BIGINT          NOT NULL,
-     PRIORITY               INTEGER         NOT NULL,
-     PRICE                  DECIMAL(19,2)   NOT NULL,
-     CURR                   VARCHAR(4)      NOT NULL,
-     UPDATE_AT              DATETIME,
-     VERSION                INTEGER         NOT NULL DEFAULT 0,
-     PRIMARY KEY (ID)
-  )
-engine=innodb;
-
-ALTER TABLE PRICE
-   ADD CONSTRAINT PRICE_BRAND_FK
-   FOREIGN KEY (BRAND_ID)
-   REFERENCES BRAND (ID);
-
-ALTER TABLE PRICE
-  ADD CONSTRAINT PRICE_PRODUCT_FK
-  FOREIGN KEY (PRODUCT_ID)
-  REFERENCES PRODUCT (ID);
-
-ALTER TABLE PRICE
-  ADD CONSTRAINT PRICE_UK UNIQUE (BRAND_ID, START_DATE, END_DATE, PRICE_LIST_ID, PRODUCT_ID, PRIORITY, CURR)
+--DROP TABLE IF EXISTS price;
+--DROP TABLE IF EXISTS product;
+--DROP TABLE IF EXISTS brand;
+--
+--CREATE TABLE brand
+--  (
+--     id                     BIGINT          NOT NULL auto_increment,
+--     created_at             DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     name                   VARCHAR(255)    NOT NULL,
+--     update_at              DATETIME,
+--     version                INTEGER         NOT NULL DEFAULT 0,
+--     PRIMARY KEY (id)
+--  );
+--
+--CREATE TABLE product
+--  (
+--     id                     BIGINT          NOT NULL auto_increment,
+--     created_at             DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     name                   VARCHAR(255)    NOT NULL,
+--     update_at              DATETIME,
+--     version                INTEGER         NOT NULL DEFAULT 0,
+--     PRIMARY KEY (id)
+--  );
+--
+--CREATE TABLE price
+--  (
+--     id                     BIGINT          NOT NULL auto_increment,
+--     created_at             DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     brand_id               BIGINT          NOT NULL,
+--     start_date             DATETIME        NOT NULL,
+--     end_date               DATETIME        NOT NULL,
+--     price_list_id          BIGINT          NOT NULL,
+--     product_id             BIGINT          NOT NULL,
+--     priority               INTEGER         NOT NULL,
+--     price                  DECIMAL(19,2)   NOT NULL,
+--     curr                   VARCHAR(4)      NOT NULL,
+--     update_at              DATETIME,
+--     version                INTEGER         NOT NULL DEFAULT 0,
+--     PRIMARY KEY (id)
+--  );
+--
+--ALTER TABLE price
+--   ADD CONSTRAINT price_brand_fk
+--   FOREIGN KEY (brand_id)
+--   REFERENCES brand (id);
+--
+--ALTER TABLE price
+--  ADD CONSTRAINT price_product_fk
+--  FOREIGN KEY (product_id)
+--  REFERENCES product (id);
+--
+--ALTER TABLE price
+--  ADD CONSTRAINT price_uk UNIQUE (brand_id, start_date, end_date, price_list_id, product_id, priority, curr)

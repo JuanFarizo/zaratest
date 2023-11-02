@@ -1,9 +1,9 @@
 package com.testjava.zaratest.domain.service;
 
-import com.testjava.zaratest.domain.model.Price;
+import com.testjava.zaratest.domain.model.PriceDTO;
 
 import java.time.LocalDateTime;
 
 public interface PriceService {
-    Price findPrice(LocalDateTime date, Long productId, Long brandId);
+    PriceDTO findPrice(Long productId, Long brandId, LocalDateTime dateTime);
 }

@@ -14,7 +14,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
         name = Product.NAME
 )
 public class Product {
-    public static final String NAME = "PRODUCT";
+    public static final String NAME = "product";
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -37,4 +37,5 @@ public class Product {
     @Column(name = "updated_at", columnDefinition = "datetime")
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
 }
