@@ -1,5 +1,3 @@
-2. Improve error message for the request parameters
-3. Constraint of the UK for table prices ?
 4. Define and write USE CASES:
     4.1  Develop an Endpoint rest GET:
         - INPUT: :
@@ -19,9 +17,6 @@ I have to build a custom response with the specific OUTPUT.
 - Manage Timezone: set default time zone UTC in Application.class
 - Add two key entities I think it would fit in this kind of application, one is Brand, and the other is the Product itself.
 Only with fields that I'm going to use in this exercise.
-- The service in this example is not needed, I added because in reality there is where Use cases are explicit and managed,
-I tried to do it clean but thinking in which aspects you will be interested to watch. (WIP)
-
 
 En la base de datos de comercio electrónico de la compañía disponemos de la tabla PRICES que refleja el precio final (pvp)
 y la tarifa que aplica a un producto de una cadena entre unas fechas determinadas.
