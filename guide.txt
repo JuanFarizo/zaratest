@@ -9,7 +9,7 @@
         - OUTPUT:
             product_id,
             brand_id,
-            price_list,
+            price_list_id,
             start_date,
             end_date,
             price.
