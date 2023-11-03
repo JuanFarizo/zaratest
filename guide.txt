@@ -1,6 +1,5 @@
-1. Manage Timezone: set default time zone UTC in Application.class
-2. Is Brand going to be a Entity? Which Value Objects could be important for this entity.
-3. Constraint of the UK for table prices
+2. Improve error message for the request parameters
+3. Constraint of the UK for table prices ?
 4. Define and write USE CASES:
     4.1  Develop an Endpoint rest GET:
         - INPUT: :
@@ -8,20 +7,28 @@
             product_id,
             brand_id.
         - OUTPUT:
-            product_identifier,
-            brand_identifier,
-            price_list,
-            application_date,
+            product_id,
+            brand_id,
+            price_list_id,
+            start_date,
+            end_date,
             price.
+I have to build a custom response with the specific OUTPUT.
 
 5. Implementation Details:
+- Manage Timezone: set default time zone UTC in Application.class
+- Add two key entities I think it would fit in this kind of application, one is Brand, and the other is the Product itself.
+Only with fields that I'm going to use in this exercise.
+- The service in this example is not needed, I added because in reality there is where Use cases are explicit and managed,
+I tried to do it clean but thinking in which aspects you will be interested to watch. (WIP)
 
 
-En la base de datos de comercio electrónico de la compañía disponemos de la tabla PRICES que refleja el precio final (pvp) y la tarifa que aplica a un producto de una cadena entre unas fechas determinadas. A continuación se muestra un ejemplo de la tabla con los campos relevantes:
-
+En la base de datos de comercio electrónico de la compañía disponemos de la tabla PRICES que refleja el precio final (pvp)
+y la tarifa que aplica a un producto de una cadena entre unas fechas determinadas.
+A continuación se muestra un ejemplo de la tabla con los campos relevantes:
+-------
 PRICES
 -------
-
 BRAND_ID         START_DATE                                    END_DATE                        PRICE_LIST                   PRODUCT_ID  PRIORITY                 PRICE           CURR
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 1         2020-06-14-00.00.00                        2020-12-31-23.59.59                        1                        35455                0                        35.50            EUR
@@ -30,7 +37,6 @@ BRAND_ID         START_DATE                                    END_DATE         
 1         2020-06-15-16.00.00                        2020-12-31-23.59.59                        4                        35455                1                        38.95            EUR
 
 Campos:
-
 BRAND_ID: foreign key de la cadena del grupo (1 = ZARA).
 START_DATE , END_DATE: rango de fechas en el que aplica el precio tarifa indicado.
 PRICE_LIST: Identificador de la tarifa de precios aplicable.
@@ -40,7 +46,6 @@ PRICE: precio final de venta.
 CURR: iso de la moneda.
 
 Se pide:
-
 Construir una aplicación/servicio en SpringBoot que provea una end point rest de consulta  tal que:
 
 Acepte como parámetros de entrada: fecha de aplicación, identificador de producto, identificador de cadena.

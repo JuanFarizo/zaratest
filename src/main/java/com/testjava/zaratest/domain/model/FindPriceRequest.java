@@ -1,21 +1,24 @@
 package com.testjava.zaratest.domain.model;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class FindPriceRequest implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 8740545478528208487L;
 
-    @NotNull(message = "ProductId must not be null")
+    @NotNull(message = "ProductId must be provided.")
     private Long productId;
-    @NotNull(message = "BrandId must not be null")
+    @NotNull(message = "BrandId must be provided.")
     private Long brandId;
-    @NotNull(message = "ApplicationDate must not be null")
+    @NotNull(message = "ApplicationDate must be provided.")
     private LocalDateTime applicationDate;
 
     public static FindPriceRequest createFindPriceRequest(
