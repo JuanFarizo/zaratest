@@ -6,29 +6,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.client.RestClientException;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.slf4j.LoggerFactory.getLogger;
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.ResponseEntity.status;
 
 @ControllerAdvice
 public class ResponseExceptionHandler {
     private static final Logger logger = getLogger(ResponseExceptionHandler.class);
-    private static final String TITLE_BAD_REQUEST = "Bad request";
-    private static final String TITLE_NOT_FOUND = "Not found";
-
-    @ExceptionHandler(value = {
-            IllegalArgumentException.class,
-            RestClientException.class
-    })
-    protected ResponseEntity<Map<String, Object>> handleBadRequest(RuntimeException e) {
-        return error(e, BAD_REQUEST, TITLE_BAD_REQUEST);
-    }
+    private static final String TITLE_NOT_FOUND = "Not found error";
 
     @ExceptionHandler(value = {EntityNotFoundException.class})
     protected ResponseEntity<Map<String, Object>> handleNotFound(EntityNotFoundException e) {
@@ -43,4 +32,5 @@ public class ResponseExceptionHandler {
         bodyBuilder.put("exception", exception.getMessage());
         return status(status.value()).body(bodyBuilder);
     }
+
 }
