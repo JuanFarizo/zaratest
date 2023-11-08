@@ -9,11 +9,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Collections;
 import java.util.List;
 
 import static com.testjava.zaratest.domain.ModelFactory.createPriceDTO;
 import static java.time.LocalDateTime.now;
-import static java.util.Collections.EMPTY_LIST;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
@@ -29,7 +29,7 @@ class PriceServiceImplTest {
 
     @Test
     void givenEmptyListWhenFindPriceThenThrowException() {
-        given(priceRepository.findAllByProductIdAndBrandIdAndDate(any(), any(), any())).willReturn(EMPTY_LIST);
+        given(priceRepository.findAllByProductIdAndBrandIdAndDate(any(), any(), any())).willReturn(Collections.emptyList());
         assertThrows(EntityNotFoundException.class, () -> priceService.findPrice(1L, 1L, now()));
     }
 
